@@ -1,6 +1,6 @@
-# Which Password
+# Which-Password
 
-"Which Password" is a simple batch script that attempts to extract password-protected RAR, ZIP, and 7z files using a list of passwords stored in a text file. The script utilizes the command-line version of 7-Zip for extraction.
+"Which-Password" is a simple batch script that attempts to extract password-protected RAR, ZIP, and 7z files using a list of passwords stored in a text file. The script utilizes the command-line version of 7-Zip for extraction.
 
 ## Features
 
