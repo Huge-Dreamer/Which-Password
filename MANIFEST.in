@@ -1,0 +1,7 @@
+include LICENSE
+include README.md
+include requirements.txt
+include config/config.json.example
+recursive-include src *.py
+recursive-include tests *.py
+recursive-include scripts *.sh *.bat 

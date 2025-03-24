@@ -1,0 +1,20 @@
+{
+    "max_workers": 8,              // Number of parallel threads (auto-detected based on system)
+    "timeout": 0,                  // Timeout in seconds (0 = no timeout)
+    "output_dir": "extracted",     // Directory for extracted files
+    "save_successful": true,       // Save successful passwords to file
+    "successful_passwords_file": "successful_passwords.txt",  // File to save successful passwords
+    "supported_formats": [         // List of supported archive formats
+        ".rar",
+        ".zip",
+        ".7z",
+        ".tar",
+        ".gz"
+    ],
+    "retry_limit": 1000,          // Maximum number of retries for failed attempts
+    "log_level": "INFO",          // Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+    "sevenzip_path": "",          // Path to 7-Zip executable (leave empty for auto-detection)
+    "batch_size": 1000,           // Number of passwords to process in each batch
+    "memory_limit": 8589934592,   // Memory limit in bytes (8GB default)
+    "cpu_priority": "high"        // Process priority (high/normal)
+} 

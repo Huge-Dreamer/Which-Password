@@ -1,51 +1,102 @@
 # Which-Password
 
-"Which-Password" is a simple batch script that attempts to extract password-protected RAR, ZIP, and 7z files using a list of passwords stored in a text file. The script utilizes the command-line version of 7-Zip for extraction.
+A powerful and efficient password-protected archive cracker that uses system resources optimally while maintaining stability.
 
 ## Features
 
-- Supports RAR, ZIP, and 7z file formats.
-- Reads passwords from a specified text file.
-- Provides feedback on the password attempts and the result of the extraction.
-- Keeps the Command Prompt open to display results.
+- Supports multiple archive formats (RAR, ZIP, 7Z, TAR, GZ)
+- Multi-threaded password cracking with optimal resource utilization
+- Automatic system resource detection and optimization
+- Memory-aware batch processing
+- Progress tracking with detailed statistics
+- Configurable timeout and retry limits
+- Cross-platform support (Windows, Linux, macOS)
+- High-priority process execution
+- Automatic 7-Zip detection and integration
 
 ## Requirements
 
-- Windows operating system.
-- [7-Zip](https://www.7-zip.org/) installed (make sure to have `7z.exe` available in your system or specify the path in the script).
-- A text file containing the list of passwords (named `PWD.txt`).
+- Python 3.8 or higher
+- 7-Zip installed on your system
+- Windows: 7-Zip installed in default location or specified in config
+- Linux/macOS: 7-Zip installed and available in PATH
 
 ## Installation
 
-1. **Download 7-Zip**: If you haven't already, download and install 7-Zip from [7-Zip's official website](https://www.7-zip.org/).
+1. Clone the repository:
+```bash
+git clone https://github.com/which-password/Which-Password.git
+cd Which-Password
+```
 
-2. **Add 7-Zip to the PATH Environment Variable** (optional but recommended):
-   - Locate the installation directory of 7-Zip, typically `C:\Program Files\7-Zip\`.
-   - Right-click on "This PC" or "Computer" and select "Properties".
-   - Click on "Advanced system settings" on the left.
-   - In the System Properties window, click on the "Environment Variables" button.
-   - In the Environment Variables window, find the "Path" variable in the "System variables" section and select it, then click "Edit".
-   - Click "New" and add the path to the 7-Zip installation directory (e.g., `C:\Program Files\7-Zip\`).
-   - Click "OK" to close all dialog boxes.
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-3. **Clone or Download the Repository**: Clone this repository or download it as a ZIP file.
-
-4. **Place Your Files**: Ensure that the following files are in the same directory as the batch script:
-   - The archive file you want to extract (e.g., `example.rar`, `example.zip`, or `example.7z`).
-   - A text file named `PWD.txt` containing the list of passwords (one password per line).
+3. (Optional) Configure settings in `config/config.json`:
+```json
+{
+    "max_workers": 8,
+    "timeout": 0,
+    "output_dir": "extracted",
+    "save_successful": true,
+    "successful_passwords_file": "successful_passwords.txt",
+    "supported_formats": [".rar", ".zip", ".7z", ".tar", ".gz"],
+    "retry_limit": 1000,
+    "log_level": "INFO",
+    "sevenzip_path": "",
+    "batch_size": 1000,
+    "memory_limit": 8589934592,
+    "cpu_priority": "high"
+}
+```
 
 ## Usage
 
-1. Open Command Prompt.
-2. Navigate to the directory where the batch script is located.
-3. Run the script by typing:
-   ```cmd
-   extract_archive.bat
+Basic usage:
+```bash
+python src/which_password.py archive.7z --passwords passwords.txt
+```
 
-## Disclaimer
+Advanced options:
+```bash
+python src/which_password.py archive.7z --passwords passwords.txt --config custom_config.json
+```
 
-This tool is designed and provided solely for educational purposes. Any misuse of this tool for malicious or illegal activities is strictly forbidden. The author accepts no responsibility for any improper use of this tool.
+### Command Line Arguments
 
-## Credits
+- `archive`: Path to the archive file (required)
+- `--passwords`: Path to password file (default: PWD.txt)
+- `--config`: Path to config file (default: config/config.json)
 
-This tool was developed by Huge Dreamer for educational purposes.
+## Configuration
+
+The script automatically detects and optimizes for your system's capabilities:
+- CPU cores and available memory
+- Optimal worker count
+- Memory limits
+- Process priority
+
+You can override these settings in the config file.
+
+## Performance
+
+- Uses 2x CPU cores (capped at 16 workers)
+- Implements memory-aware batch processing
+- Sets high process priority
+- Provides detailed progress tracking
+- Handles system resource limits gracefully
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## Acknowledgments
+
+- 7-Zip for providing the archive handling capabilities
+- All contributors who have helped improve this project
