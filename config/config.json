@@ -1,0 +1,11 @@
+{
+    "max_workers": 4,
+    "timeout": 0,
+    "output_dir": "extracted",
+    "save_successful": true,
+    "successful_passwords_file": "successful_passwords.txt",
+    "supported_formats": [".rar", ".zip", ".7z", ".tar", ".gz"],
+    "retry_limit": 1000,
+    "log_level": "INFO",
+    "sevenzip_path": ""
+} 
