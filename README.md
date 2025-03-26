@@ -94,6 +94,3 @@ This tool is for educational purposes only. Always ensure you have the right to 
 - Built with Python and PyQt6
 - Uses 7-Zip for archive handling
 - Developed by Huge-Dreamer
-
-## Known Issues
-None reported
